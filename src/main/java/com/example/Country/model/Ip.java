@@ -2,12 +2,13 @@ package com.example.Country.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @AllArgsConstructor
 @Getter
 @Setter
+
 public class Ip {
 
     private String status;
@@ -24,9 +25,6 @@ public class Ip {
     private String as;
     private String query;
 
-
-    public Ip(String query) {
-    }
 }
 
 
