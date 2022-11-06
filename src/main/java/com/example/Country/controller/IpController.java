@@ -1,6 +1,7 @@
 package com.example.Country.controller;
 
 
+import com.example.Country.model.Ip;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +22,7 @@ public class IpController {
     @GetMapping(value="/ip/me",produces= MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getMe() {
         try {
-            String result = restTemplate.getForObject(uri, String.class);
+            Ip result = restTemplate.getForObject(uri, Ip.class);
             return new ResponseEntity<>(result, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +33,7 @@ public class IpController {
     @GetMapping(value = "/ip/{query}",produces= MediaType.APPLICATION_JSON_VALUE )
     public ResponseEntity<?> getByIp(@PathVariable("query") String query) {
         try {
-            return ResponseEntity.ok().body(restTemplate.getForObject(uri + "/" + query, String.class));
+            return ResponseEntity.ok().body(restTemplate.getForObject(uri + "/" + query, Ip.class));
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>("Error", HttpStatus.INTERNAL_SERVER_ERROR);
